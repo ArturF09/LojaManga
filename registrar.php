@@ -1,40 +1,58 @@
 <?php
 session_start();
-require('conect.php');
-if(isset($_SESSION['email'])){
+require('conect.php');  // Certifique-se de que 'conect.php' já esteja configurado para PDO
+
+if (isset($_SESSION['email'])) {
     header('location:index.html');
+    exit();  // Sempre use exit após redirecionamentos
 }
 
-if(isset($_POST['botao'])){
-    $estado=0;
-    $sql_verifica=sprintf("select * from User where email='%s';",$_POST['email']);
-    $res_verifica=mysqli_query($conn,$sql_verifica);
-    $num_verifica=mysqli_num_rows($res_verifica);
+if (isset($_POST['botao'])) {
+    $estado = 0;
+
+    // Verifica se todos os campos necessários estão preenchidos
+    if (!empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['passwordR'])) {
+
+        // Verifica se o email já está registrado
+        $sql_verifica = "SELECT * FROM User WHERE email = :email";
+        $stmt_verifica = $conn->prepare($sql_verifica);
+        $stmt_verifica->bindParam(':email', $_POST['email']);
+        $stmt_verifica->execute();
+        $num_verifica = $stmt_verifica->rowCount();
         
-    if(!empty($_POST['nome']) and ($_POST['email']) and ($_POST['username']) and ($_POST['password'])){
-        if($num_verifica==0){   
-            $pass=md5($_POST['password']);
-            $passR=md5($_POST['passwordR']);
-        if($pass==$passR){
-            $sql=sprintf("insert into User (nome, username, email, password) values ('%s', '%s', '%s', '%s');",$_POST['nome'],$_POST['username'],$_POST['email'],$pass);
-            if(!mysqli_query($conn,$sql)){
-                    
-                $estado=2;
+        if ($num_verifica == 0) {
+            // Hash seguro da senha usando password_hash
+            $pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            $passR = password_hash($_POST['passwordR'], PASSWORD_BCRYPT);
+
+            // Verifica se as senhas correspondem
+            if (password_verify($_POST['passwordR'], $pass)) {
+                // Insere o novo usuário no banco de dados
+                $sql = "INSERT INTO User (nome, username, email, password) VALUES (:nome, :username, :email, :password)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':nome', $_POST['nome']);
+                $stmt->bindParam(':username', $_POST['username']);
+                $stmt->bindParam(':email', $_POST['email']);
+                $stmt->bindParam(':password', $pass);
+
+                if ($stmt->execute()) {
+                    header('refresh:2;url=login.php');
+                    exit();
                 } else {
-                header('refresh:2;url=login.php');
+                    $estado = 2;  // Erro ao inserir no banco de dados
+                }
+            } else {
+                $estado = 4;  // Senhas não correspondem
+                header('refresh:3;url=registrar.php');
+                exit();
             }
         } else {
-            $estado=4;
-            header('refresh:3;url=registrar.php');
+            $estado = 3;  // Email já registrado
         }
-        } else {
-        $estado=3;
-    }  
-        
-    } 
-
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
