@@ -2,11 +2,7 @@
 session_start();
 require('../config/conect.php');
 
-$sql_User = "SELECT * FROM User WHERE email = :email";
-$stmt = $conn->prepare($sql_User);
-$stmt->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-$stmt->execute();
-$reg_User = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 $sql_Prod = "SELECT * FROM products ORDER BY RAND() LIMIT 4";
 $stmt = $conn->prepare($sql_Prod);

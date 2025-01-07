@@ -11,7 +11,8 @@ class Product {
     }
 
     // Buscar todos os produtos
-    public function getAllProducts() {
+    public function getAllProducts() 
+    {
         $query = "SELECT * FROM products";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();

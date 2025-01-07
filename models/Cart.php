@@ -1,5 +1,6 @@
 <?php
 // models/Cart.php
+require_once 'config/conect.php';
 class Cart {
     public function addProductToCart($product_id) {
         if (!isset($_SESSION['cart'])) {
