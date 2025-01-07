@@ -1,38 +1,30 @@
 <?php
-session_start();
-require('../config/conect.php');
 
-if (isset($_SESSION['email'])) {
-    header('location:../views/Principal.php');
-    exit();
-}
 
 // Define as rotas para os produtos
 $routes = [
     '/' => 'indexController',  // Página inicial
-    '/loginController' => 'loginController@index' // Mostra o Login
+    '/loginController' => 'loginController@index', // Mostra o Login
+    '/loginController/login' => 'loginController@login', // Faz o Login
+    '/principalController' => 'principalController@index' // Mostra a Página principal
 
 ];
 
-// Obtém a URL da requisição
-$requestUri = $_SERVER['REQUEST_URI'];
+// Função para processar as rotas
+function route($url) {
+    global $routes;
 
-// Itera sobre as rotas e encontra a que corresponde
-foreach ($routes as $route => $action) {
-    // Ajusta a rota para lidar com parâmetros na URL
-    $pattern = preg_replace('/\{(.*?)\}/', '([^/]+)', $route);
-    if (preg_match('#^' . $pattern . '$#', $requestUri, $matches)) {
-        array_shift($matches); // Remove o primeiro item (o caminho)
+    if (array_key_exists($url, $routes)) {
+        [$controller, $method] = explode('@', $routes[$url]);
 
-        // Separa o controlador e o método
-        list($controller, $method) = explode('@', $action);
+        // Incluir o controlador
+        require_once "controllers/$controller.php";
 
-        // Inclui o controlador
-        require_once "../controllers/{$controller}.php";
-
-        // Instancia o controlador e chama o método
+        // Instanciar o controlador e chamar o método apropriado
         $controllerInstance = new $controller();
-        call_user_func_array([$controllerInstance, $method], $matches);
-        exit;
+        $controllerInstance->$method();
+    } else {
+        http_response_code(404);
+        echo "404 - Página não encontrada.";
     }
 }

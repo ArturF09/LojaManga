@@ -1,13 +1,9 @@
 
-<!-- Cabeçalho -->
-<?php include '../includes/header.php'; ?>
-
-<?php include '../controllers/loginCon.php'; ?>
 
 <section class="login-section">
     <div class="login-container">
         <div class="login-form-wrapper">
-            <form method="post">
+            <form action="/loginControler/login" method="post">
                 <h3 class="login-title">Login</h3>
                 <div class="input-group">
                     <label for="email" class="input-label">Email<span class="required">*</span></label>
@@ -123,5 +119,3 @@
 }
 
 </style>
-<!-- Footer -->
-<?php include '../includes/footer.php'; ?>
