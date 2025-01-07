@@ -12,7 +12,7 @@ try {
     // Definindo o modo de erro do PDO para exceções
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    echo 'Conexão realizada com sucesso';  
+    // echo 'Conexão realizada com sucesso';  
 } catch (PDOException $e) {
     // Tratamento de erro caso a conexão falhe
     die('ERRO DE LIGAÇÃO: ' . $e->getMessage());

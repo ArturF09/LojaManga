@@ -1,0 +1,107 @@
+/* Estilos principais para o main */
+main {
+    font-family: Arial, sans-serif;
+    padding: 40px 10%;
+    background-color: #f8f8f8;
+}
+
+/* Título da página de produtos */
+main h1 {
+    text-align: center;
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Lista de produtos */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Estilo de cada item do produto */
+.product-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efeito de hover nos itens */
+.product-item:hover {
+    transform: translateY(-10px);
+}
+
+/* Imagem do produto */
+.product-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #eee;
+}
+
+/* Nome do produto */
+.product-item h2 {
+    color: #333;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+/* Preço do produto */
+.product-item p {
+    color: #666;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Estilo do link "Adicionar ao Carrinho" */
+.product-item a {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 12px 20px;
+    background-color: #986cec;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Efeito hover no link */
+.product-item a:hover {
+    background-color: #7a4ec1;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    main {
+        padding: 40px 5%;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .product-item img {
+        height: 220px;
+    }
+
+    .product-item h2 {
+        font-size: 20px;
+    }
+
+    .product-item p {
+        font-size: 16px;
+    }
+
+    .product-item a {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

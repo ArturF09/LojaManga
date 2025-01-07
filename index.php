@@ -1,16 +1,11 @@
+    <?php
+        if(isset($_SESSION['email'])){
+            header('location:Principal.php');
+        } 
+    ?>
+    
     <!-- Cabeçalho -->
-    <header>
-        <h1>Loja de Livros de Animes</h1>
-        <h1>One Mangá</h1>
-    </header>
-
-    <!-- Barra de Navegação -->
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Livros</a>
-        <a href="#">Novidades</a>
-        <a href="#">Contato</a>
-    </nav>
+    <?php include 'includes/header.html'; ?>
 
     <!-- Banner Principal -->
     <section class="banner">
@@ -47,7 +42,5 @@
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2024 Loja de Livros de Animes. Todos os direitos reservados.</p>
-    </footer>
+    <?php include 'includes/footer.html'; ?>
+

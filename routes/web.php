@@ -3,8 +3,8 @@
 require_once 'controllers/ProductController.php';
 require_once 'controllers/CartController.php';
 
-if ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/home') {
-    require_once 'views/home.php';
+if ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/Principal') {
+    require_once 'views/Principal.php';
 } elseif ($_SERVER['REQUEST_URI'] == '/products') {
     $controller = new ProductController();
     $controller->showProducts();

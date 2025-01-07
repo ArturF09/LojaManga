@@ -3,9 +3,9 @@
     <div class="container">
         <p>&copy; 2025 OneManga - Todos os direitos reservados</p>
         <div class="social-links">
-            <a href="#">Facebook</a> | 
-            <a href="#">Twitter</a> | 
-            <a href="#">Instagram</a>
+            <a href="https://www.ipsantarem.pt/">Politécnico</a> | 
+            <a href="https://9animetv.to/">9anime</a> | 
+            <a href="https://www.instagram.com/_artur_ft/">Instagram</a>
         </div>
     </div>
 </footer>
@@ -16,7 +16,9 @@ footer {
     background-color: #222;
     color: #fff;
     padding: 20px 0;
+    margin-top: 20px;
     text-align: center;
+    width: 100%;
 }
 
 footer .container {
