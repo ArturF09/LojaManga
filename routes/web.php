@@ -3,8 +3,9 @@
 
 // Define as rotas para os produtos
 $routes = [
-    '/' => 'indexController',  // Página inicial
-    '/loginController' => 'loginController@index', // Mostra o Login
+    //'/' => 'indexController',  // Página inicial
+    //'/loginController' => 'loginController@index', // Mostra o Login
+    '/' => 'loginController@index',
     '/loginController/login' => 'loginController@login', // Faz o Login
     '/principalController' => 'principalController@index' // Mostra a Página principal
 
