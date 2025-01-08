@@ -1,12 +1,12 @@
 <?php
-require_once 'response.php';
+include 'response.php';
 
 class loginController{
 
     public function index(){
-        include '../includes/header.php';
-        include '../view/loginView.php';
-        include '../includes/footer.php';
+        include 'includes/header.php';
+        include 'views/loginView.php';
+        include 'includes/footer.php';
         
     }
     public function login(){
@@ -27,7 +27,7 @@ class loginController{
                 $valido = $userModel->validadeByPassword($pass, $user);
 
                 if($valido == true){
-                    Response::redirect('/principalController'); 
+                    Response::redirect('principalController'); 
                 }
                 else { 
                         echo "Senha incorreta.";
