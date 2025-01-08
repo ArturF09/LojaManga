@@ -27,7 +27,8 @@ try {
     echo "Erro ao recuperar o carrinho: " . $e->getMessage();
 }
 
-$total = 0;
+$total = 0; // Inicializando o total
+
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +68,15 @@ $total = 0;
                             <a class="remove-button" href="remove-from-cart.php?id=<?php echo $item['product_id']; ?>">Remover</a>
                         </div>
                     </div>
+                    <?php 
+                        // Acumular o total
+                        $total += $item['price'] * $item['quantity']; 
+                    ?>
                 <?php endforeach; ?>
             </div>
 
             <div class="cart-summary">
-                <h3>Total: R$<?php echo number_format($total, 2, ',', '.'); ?></h3>
+                <h3>Total: €<?php echo number_format($total, 2, ',', '.'); ?></h3>
                 <a class="checkout-button" href="../controllers/FinalizarCompraControlador.php">Finalizar Compra</a>
             </div>
         <?php endif; ?>
@@ -80,4 +85,3 @@ $total = 0;
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>
-
