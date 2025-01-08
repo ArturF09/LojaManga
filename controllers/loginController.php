@@ -27,20 +27,23 @@ class loginController{
                 $valido = $userModel->validadeByPassword($pass, $user);
 
                 if($valido == true){
-                    Response::redirect('principalController'); 
+                    Response::redirect('principalController/'); 
+                    exit();
                 }
                 else { 
                         echo "Senha incorreta.";
+                        include '../includes/header.php';
+                        include '../view/loginView.php';
+                        include '../includes/footer.php';
                     }
 
             } else {
                 echo "Usuário não encontrado.";
+                include '../includes/header.php';
+                include '../view/loginView.php';
+                include '../includes/footer.php';
             }
         }
-
-        include '../includes/header.php';
-        include '../view/loginView.php';
-        include '../includes/footer.php';
         
     }
 }

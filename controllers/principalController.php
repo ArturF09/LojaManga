@@ -1,7 +1,7 @@
 <?php
 require_once 'response.php';
 
-class loginController{
+class PrincipalController{
 
     public function index(){
         include 'includes/header.php';

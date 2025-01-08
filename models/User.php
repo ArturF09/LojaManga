@@ -54,11 +54,12 @@ class UserModel
         if (password_verify($pass, $user['password'])) {
             $_SESSION["id"] = $user["id"];
             $_SESSION["email"] = $user["email"];
-            exit();
             return true;
+            exit();
 
         } else {
             return false;
+            exit();
         } 
     }
 

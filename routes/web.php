@@ -7,7 +7,7 @@ $routes = [
     //'/loginController' => 'loginController@index', // Mostra o Login
     '/LojaManga/' => 'loginController@index',
     '/loginController/login' => 'loginController@login', // Faz o Login
-    '/principalController' => 'principalController@index' // Mostra a Página principal
+    '/principalController/' => 'principalController@index' // Mostra a Página principal
 
 ];
 
