@@ -77,6 +77,17 @@ main h1 {
     background-color: #7a4ec1;
 }
 
+/* Estilo para mensagens de feedback */
+.message {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    text-align: center;
+}
+
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
     main {

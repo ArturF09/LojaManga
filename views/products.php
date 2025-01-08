@@ -34,19 +34,33 @@ try {
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
+
     <main>
         <h1>Produtos</h1>
+
+        <!-- Exibir mensagem de sucesso ou aviso -->
+        <?php if (isset($_SESSION['message'])) : ?>
+            <div class="message">
+                <?php
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']); // Remover a mensagem após exibir
+                ?>
+            </div>
+        <?php endif; ?>
+
         <div class="product-list">
             <?php foreach ($products as $product) : ?>
                 <div class="product-item">
                     <img src="../images/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
                     <h2><?php echo $product['name']; ?></h2>
-                    <p>Preço: R$<?php echo number_format($product['price'], 2, ',', '.'); ?></p>
-                    <a href="/add-to-cart?id=<?php echo $product['id']; ?>">Adicionar ao Carrinho</a>
+                    <p>Preço: €<?php echo number_format($product['price'], 2, ',', '.'); ?></p>
+                    <a href="add-to-cart.php?id=<?php echo $product['id']; ?>">Adicionar ao Carrinho</a>
                 </div>
             <?php endforeach; ?>
         </div>
     </main>
+
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>
+
