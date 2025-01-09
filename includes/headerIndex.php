@@ -4,19 +4,13 @@
 
 <header>
     <div class="container">
-        <h1><a href="../views/Principal.php">OneManga</a></h1>
+        <h1><a href="index.php">OneManga</a></h1>
         <nav>
             <ul>
-                <li><a href="../views/Principal.php">Início</a></li>
-                <li><a href="../views/products.php">Produtos</a></li>
+                <li><a href="index.php">Início</a></li>
+                <li><a href="views/products.php">Produtos</a></li>
 
                 <?php
-                if(isset($_SESSION['email'])){
-                ?>
-                    <li><a href="../views/orders.php"><i class="fas fa-box"></i></a></li>
-                <?php
-                };
-
                 if(isset($_SESSION['email'])){
                 ?>
                     <li><a href="../views/cart.php"><i class="fas fa-shopping-cart"></i></a></li>
@@ -25,16 +19,15 @@
                 ?>
                 
                 <?php
-
                 if(!isset($_SESSION['email'])){
                 ?>
-                    <li><a href="../views/login.php"><i class="fas fa-user"></i></a></li>
+                    <li><a href="views/login.php"><i class="fas fa-user"></i></a></li>
                 <?php
                 };
                 
                 if(isset($_SESSION['email'])){
                 ?>
-                    <li><a href="../views/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a href="views/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
                 <?php
                 };
                 ?>

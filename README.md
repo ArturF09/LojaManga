@@ -2,7 +2,11 @@
 ## Descrição
 #### Esse site é uma loja online de mangás japoneses
 ### Link
+<<<<<<< HEAD
 #### http://onemanga.freesite.online/LojaManga/views/login.php
+=======
+#### http://onemanga.freesite.online/LojaManga/
+>>>>>>> mudança
 ### Desenvolvedores
 #### Artur Guerreiro e Victor Coitinho.
 ## Linguagens
