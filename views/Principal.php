@@ -74,7 +74,7 @@ if(!isset($_SESSION['email'])) header('location:login.php');
                     <img src="../images/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
                     <h2><?php echo $product['name']; ?></h2>
                     <p>Preço: R$<?php echo number_format($product['price'], 2, ',', '.'); ?></p>
-                    <a href="/add-to-cart?id=<?php echo $product['id']; ?>">Adicionar ao Carrinho</a>
+                    <a href="add-to-cart.php?id=<?php echo $product['id']; ?>">Adicionar ao Carrinho</a>
                 </div>
             <?php endforeach; ?>
         </div>

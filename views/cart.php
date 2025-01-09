@@ -5,6 +5,7 @@ if (!isset($_SESSION['email'])) header('Location: login.php');
 // Obtém o e-mail do usuário logado
 $email = $_SESSION['email'];
 
+
 // Conectar ao banco de dados
 require('../config/conect.php');
 
